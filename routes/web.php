@@ -27,3 +27,17 @@ Route::get('/change-status-main/{id}', 'MainController@changeStatus');
 Route::get('/view-main/{id}', 'MainController@view');
 });
 // end of main routes
+
+// routes for users.
+Route::group(array('prefix' => 'users'), function()
+{
+    Route::get('/', 'UsersController@index');
+    Route::get('/add-users', 'UsersController@add');
+    Route::post('/add-users-post', 'UsersController@addPost');
+    Route::get('/delete-users/{id}', 'UsersController@delete');
+    Route::get('/edit-users/{id}', 'UsersController@edit');
+    Route::post('/edit-users-post', 'UsersController@editPost');
+    Route::get('/change-status-users/{id}', 'UsersController@changeStatus');
+    Route::get('/view-users/{id}', 'UsersController@view');
+});
+// end of users routes
