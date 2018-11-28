@@ -1,27 +1,32 @@
 <?php namespace App\Http\Controllers;
 
 use App\Models\Main as Main;
+use App\Models\Users as Users;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 use Hash;
 class MainController extends Controller {
 
     public function index()
       { 
-        $data['mains'] = Main::all();
-        return view('main/index',$data);
+        // $data['mains'] = Main::all();
+        return view('main/index');
       }
     public function add()
       { 
         return view('main/add');
       }
-    public function addPost()
+    public function login()
       {
-        $main_data = array(
-             'name' => Input::get('name'), 
-            );
-    $main_id = Main::insert($main_data);
-        return redirect('main')->with('message', 'Main successfully added');
+        $username = Input::get('username');
+        $password = Input::get('password');
+        $users = Users::where('username', '=', $username)->where('password','=',$password)->get();
+        if(!$users->isEmpty()){
+            return redirect('/')->with('message', 'Main successfully added');
+        }else{
+            return redirect('/')->with('message', 'Main successfully added');
+        }
     }
     public function delete($id)
     {   

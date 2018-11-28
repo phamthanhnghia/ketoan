@@ -17,6 +17,10 @@ class UsersController extends Controller {
       }
     public function addPost()
       {
+        // echo '<pre>';
+        // print_r(Input::get());
+        // echo '</pre>';
+        // die;
         $users_data = array(
              'user_code' => Input::get('user_code'), 
              'name' => Input::get('name'), 
@@ -29,6 +33,7 @@ class UsersController extends Controller {
              'password' => Input::get('password'), 
              'username' => Input::get('username'), 
              'role' => Input::get('role'), 
+             'created_at' => date("Y-m-d H:i:s"),
             );
                                             $users_id = Users::insert($users_data);
         return redirect('users')->with('message', 'Users successfully added');
@@ -61,6 +66,7 @@ class UsersController extends Controller {
           'password' => Input::get('password'), 
           'username' => Input::get('username'), 
           'role' => Input::get('role'), 
+          'updated_at' => date("Y-m-d H:i:s"),
         );
         $users_id = Users::where('id', '=', $id)->update($users_data);
         return redirect('users')->with('message', 'Users Updated successfully');
