@@ -41,3 +41,17 @@ Route::group(array('prefix' => 'users'), function()
     Route::get('/view-users/{id}', 'UsersController@view');
 });
 // end of users routes
+
+// routes for bill.
+Route::group(array('prefix' => 'bill'), function()
+{
+Route::get('/', 'BillController@index');
+Route::get('/add-bill', 'BillController@add');
+Route::post('/add-bill-post', 'BillController@addPost');
+Route::get('/delete-bill/{id}', 'BillController@delete');
+Route::get('/edit-bill/{id}', 'BillController@edit');
+Route::post('/edit-bill-post', 'BillController@editPost');
+Route::get('/change-status-bill/{id}', 'BillController@changeStatus');
+Route::get('/view-bill/{id}', 'BillController@view');
+});
+// end of bill routes
