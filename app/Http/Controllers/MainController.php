@@ -21,48 +21,26 @@ class MainController extends Controller {
       {
         $username = Input::get('username');
         $password = Input::get('password');
-        $users = Users::where('username', '=', $username)->where('password','=',$password)->get();
-        if(!$users->isEmpty()){
-            return redirect('/')->with('message', 'Main successfully added');
+        $users = Users::where('username', '=', $username)->where('password','=',$password)->first();
+        
+        if(empty($users)){
+            return redirect('/')->with('message', 'Đéo đăng nhập được!');
         }else{
-            return redirect('/')->with('message', 'Main successfully added');
+            session(['users' => $users ]);
+            // echo '<pre>';
+            // print_r($users);
+            // echo '</pre>';
+            // die;
+            return redirect('/main');
         }
     }
-    public function delete($id)
+    public function main()
     {   
-        $main=Main::find($id);
-        $main->delete();
-        return redirect('main')->with('message', 'Main deleted successfully.');
+        // echo '<pre>';
+        // print_r(session('users'));
+        // echo '</pre>';
+        // die;
+        return view('main/main');
     }
-    public function edit($id)
-    {   
-        $data['main']=Main::find($id);
-        return view('main/edit',$data);
-    }
-    public function editPost()
-    {   
-        $id =Input::get('main_id');
-        $main=Main::find($id);
-               
-        $main_data = array(
-          'name' => Input::get('name'), 
-        );
-        $main_id = Main::where('id', '=', $id)->update($main_data);
-        return redirect('main')->with('message', 'Main Updated successfully');
-    }
-
     
-    public function changeStatus($id)
-    {   
-        $main=Main::find($id);
-        $main->status=!$main->status;
-        $main->save();
-        return redirect('main')->with('message', 'Change main status successfully');
-    }
-     public function view($id)
-    {   
-        $data['main']=Main::find($id);
-        return view('main/view',$data);
-        
-    }
 }

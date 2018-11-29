@@ -17,6 +17,11 @@ class BillController extends Controller {
       }
     public function addPost()
       {
+
+        echo '<pre>';
+        print_r(Input::get());
+        echo '</pre>';
+        die;
         $bill_data = array(
              'bill_type' => Input::get('bill_type'), 
              'user_id' => Input::get('user_id'), 

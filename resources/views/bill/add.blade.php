@@ -1,53 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Laravel Crud By Crud Generator</title>
+  <title>PHIẾU THU CHI HẰNG NGÀY</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
+
 <body>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="http://crudegenerator.in">Laravel Crud By Crud Generator</a>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{{Request::root()}}/main">PHIẾU THU CHI HẰNG NGÀY</a>
       </div>
       <ul class="nav navbar-nav">
         <li><a href="{{Request::root()}}/bill">Manage Bill</a></li>
-        <li class="active" ><a href="{{Request::root()}}/bill/add-bill">Add Bill</a></li>
+        <li class="active"><a href="{{Request::root()}}/bill/add-bill">Add Bill</a></li>
       </ul>
-  </div>
-</nav>
+    </div>
+  </nav>
+  
 
-<div class="container">
+  <div class="container">
 
-  <h2>Add Bill</h2>  
-<form role="form" method="post" action="{{Request::root()}}/bill/add-bill-post" >
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-      <div class="form-group">
-    <label for="bill_type">Bill_type:</label>
-    <input type="text" class="form-control" id="bill_type" name="bill_type">
-  </div>
-    <div class="form-group">
-    <label for="user_id">User_id:</label>
-    <input type="number" class="form-control" id="user_id" name="user_id">
-  </div>
-    <div class="form-group">
-    <label for="reason_note">Reason_note:</label>
-    <input type="text" class="form-control" id="reason_note" name="reason_note">
-  </div>
-    <div class="form-group">
-    <label for="original_docs">Original_docs:</label>
-    <input type="text" class="form-control" id="original_docs" name="original_docs">
-  </div>
-    <div class="form-group">
-    <label for="wh_id">Wh_id:</label>
-    <input type="number" class="form-control" id="wh_id" name="wh_id">
-  </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-</div>
+    <h2>Phiếu thu tiền mặt</h2>
+    <form role="form" method="post" action="{{Request::root()}}/bill/add-bill-post">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="bill_type">Tài khoản:</label>
+            <input type="text" class="form-control" id="acc_code" name="acc_code">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bill_type">Tiền</label>
+            <input type="text" class="form-control" id="acc_code" name="acc_code" value="Tiền mặt Việt Nam (VNĐ)"
+              disabled>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="bill_type">Loại hóa đơn:</label>
+            <!-- <input type="text" class="form-control" id="bill_type" name="bill_type"> -->
+            <select class="form-control" id="bill_type" name="bill_type">
+              <option value="1" selected>Phiếu thu</option>
+              <option value="saab">Phiếu chi</option>
+            </select>
+          </div>
+        </div>
 
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="user_id">Mã khách hàng:</label>
+            <input type="text" class="form-control" id="user_id" name="user_id">
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="user_id">Họ tên:</label>
+            <input type="text" class="form-control" id="user_id" name="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="user_id">Địa chỉ:</label>
+            <input type="text" class="form-control" id="user_id" name="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="reason_note">Lý do:</label>
+            <input type="text" class="form-control" id="reason_note" name="reason_note">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="original_docs">Chứng từ gốc:</label>
+            <input type="text" class="form-control" id="original_docs" name="original_docs">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="wh_id">Mã kho:</label>
+            <input type="number" class="form-control" id="wh_id" name="wh_id" value="1" disabled>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>TKĐU</th>
+              <th>Ngày PHHĐ</th>
+              <th>Số HĐ</th>
+              <th>Loại HĐ</th>
+              <th>Số tiền</th>
+              <th>Tỷ lệ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php 
+            for ($i=0; $i < 5; $i++): ?>
+              <tr>
+              <td><input type="text" class="form-control" id="" name="detail[<?= $i ?>][acc_code]"></td>
+              <td><input type="date" class="form-control" id="" name="detail[<?= $i ?>][released_date]"></td>
+              <td><input type="text" class="form-control" id="" name="detail[<?= $i ?>][invoice_number]"></td>
+              <td><input type="text" class="form-control" id="" name="detail[<?= $i ?>][invoice_type]"></td>
+              <td><input type="text" class="form-control" id="" name="detail[<?= $i ?>][total]"></td>
+              <td><input type="text" class="form-control" id="" name="detail[<?= $i ?>][exchange_rate]"></td>
+            </tr>
+            <?php
+              endfor;
+            ?>
+            
+            
+            
+          </tbody>
+        </table>
+      </div>
+      <button type="submit" class="btn btn-primary">Lưu</button>
+    </form>
+  </div>
 </body>
+
 </html>

@@ -39,7 +39,7 @@
       <div class="row">
         <div class="col-md-12">
         @if(Session::has('message'))
-          <div class="alert alert-success">
+          <div class="alert alert-danger">
                             <strong><span class="glyphicon glyphicon-ok"></span>{{  Session::get('message') }}</strong>
                         </div>
         @endif
