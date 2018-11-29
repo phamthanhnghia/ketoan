@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Models\Bill as Bill;
+use App\Models\Users as Users;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Hash;
@@ -13,7 +14,18 @@ class BillController extends Controller {
       }
     public function add()
       { 
-        return view('bill/add');
+        $aSearchUser = array();
+        $aData = Users::all();
+        
+        foreach ($aData as $key => $value) {
+          $item['label'] = $value->user_code." - ".$value->name." - ".$value->address;
+          $item['value'] = $value->id;
+          $item['name']  = $value->name;
+          $item['address']  = $value->address;
+          $aSearchUser[] = $item;
+        }
+        return view('bill/add',
+                ['aSearchUser' => $aSearchUser]);
       }
     public function addPost()
       {

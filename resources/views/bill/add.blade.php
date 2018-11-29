@@ -6,6 +6,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -56,20 +59,20 @@
         <div class="col-md-2">
           <div class="form-group">
             <label for="user_id">Mã khách hàng:</label>
-            <input type="text" class="form-control" id="user_id" name="user_id">
+            <input type="text" class="form-control" id="customer-search" name="user_id">
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="form-group">
             <label for="user_id">Họ tên:</label>
-            <input type="text" class="form-control" id="user_id" name="">
+            <input type="text" class="form-control" id="name" name="">
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="user_id">Địa chỉ:</label>
-            <input type="text" class="form-control" id="user_id" name="">
+            <input type="text" class="form-control" id="address" name="">
           </div>
         </div>
         <div class="col-md-6">
@@ -129,4 +132,18 @@
   </div>
 </body>
 
+<script>
+$( function() {
+    var availableTags = <?php echo json_encode($aSearchUser);?> ;
+    $( "#customer-search" ).autocomplete({
+      source: availableTags,
+      select: function(event, ui) {
+        // console.log(ui);
+        event.preventDefault();
+        $("#name").val(ui.item.name);
+        $("#address").val(ui.item.address);
+      } 
+    });
+  } );
+</script>
 </html>

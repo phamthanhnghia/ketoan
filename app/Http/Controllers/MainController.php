@@ -10,7 +10,7 @@ class MainController extends Controller {
 
     public function index()
       { 
-        // $data['mains'] = Main::all();
+        
         return view('main/index');
       }
     public function add()
