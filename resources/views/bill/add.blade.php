@@ -90,7 +90,7 @@
         <div class="col-md-2">
           <div class="form-group">
             <label for="wh_id">Mã kho:</label>
-            <input type="number" class="form-control" id="wh_id" name="wh_id" value="1" disabled>
+            <input type="number" class="form-control" id="wh_id" name="wh_id" value="1" >
           </div>
         </div>
         
@@ -115,8 +115,8 @@
               <td><input type="date" class="form-control" id="" name="detail[<?= $i ?>][released_date]"></td>
               <td><input type="text" class="form-control" id="" name="detail[<?= $i ?>][invoice_number]"></td>
               <td><input type="text" class="form-control" id="" name="detail[<?= $i ?>][invoice_type]"></td>
-              <td><input type="text" class="form-control" id="" name="detail[<?= $i ?>][total]"></td>
-              <td><input type="text" class="form-control" id="" name="detail[<?= $i ?>][exchange_rate]"></td>
+              <td><input type="number" class="form-control" id="" name="detail[<?= $i ?>][total]"></td>
+              <td><input type="number" class="form-control" id="" name="detail[<?= $i ?>][exchange_rate]"></td>
             </tr>
             <?php
               endfor;
