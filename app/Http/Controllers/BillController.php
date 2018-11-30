@@ -13,7 +13,7 @@ class BillController extends Controller {
         $data['bills'] = Bill::all();
         return view('bill/index',$data);
       }
-    public function add()
+    public function add($id)
       { 
         $aSearchUser = array();
         $aData = Users::all();
@@ -25,8 +25,11 @@ class BillController extends Controller {
           $item['address']  = $value->address;
           $aSearchUser[] = $item;
         }
-        return view('bill/add',
-                ['aSearchUser' => $aSearchUser]);
+
+        return view('bill/add',[
+            'aSearchUser' => $aSearchUser,
+            'id' => $id,
+            ]);
       }
     public function addPost()
       {

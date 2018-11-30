@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Laravel Crud By Crud Generator</title>
+  <title>PHIẾU THU CHI HẰNG NGÀY</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
+
 <body>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="http://crudegenerator.in">Laravel Crud By Crud Generator</a>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{{Request::root()}}/main">PHIẾU THU CHI HẰNG NGÀY</a>
       </div>
       <ul class="nav navbar-nav">
-        <li class="active" ><a href="{{Request::root()}}/bill">Manage Bill</a></li>
-        <li><a href="{{Request::root()}}/bill/add-bill">Add Bill</a></li>
+        <li><a href="{{Request::root()}}/bill">Danh sách</a></li>
+        <!-- <li class="active"><a href="{{Request::root()}}/bill/add-bill">Add Bill</a></li> -->
       </ul>
-  </div>
-</nav>
+    </div>
+  </nav>
 
 <div class="container">
 
-  <h2>Manage Bill</h2>
+  <h2>Danh sách</h2>
 
 @if(Session::has('message'))
   <div class="alert alert-success">
@@ -34,9 +37,11 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>SL No</th>
-        <th>bill_type</th>
-       <th>Actions</th>
+        <th>#</th>
+        <th>Tài khoản </th>
+        <th>Loại hóa đơn</th>
+        <th>Khách hàng</th>
+       <th>Thao tác</th>
       </tr>
     </thead>
     <tbody>
@@ -44,10 +49,11 @@
 @foreach($bills as $bill)
       <tr>
         <td>{{$i}} </td>
-        <td> <a href="{{Request::root()}}/bill/view-bill/{{$bill->id}}" > {{$bill->bill_type }}</a> </td>
-
+        <td>{{ $bill->acc_code }} </td>
+        <td> <a href="{{Request::root()}}/bill/view-bill/{{$bill->id}}" >  @if($bill->bill_type==1) {{"Phiếu thu"}}  @else {{"Phiếu chi"}} @endif</a> </td>
+        <td>{{ $bill->getUserName() }} </td>
         <td>
-        <a href="{{Request::root()}}/bill/change-status-bill/{{$bill->id }}" > @if($bill->status==0) {{"Activate"}}  @else {{"Dectivate"}} @endif </a>
+        <!-- <a href="{{Request::root()}}/bill/change-status-bill/{{$bill->id }}" > @if($bill->status==0) {{"Activate"}}  @else {{"Dectivate"}} @endif </a> -->
         <a href="{{Request::root()}}/bill/edit-bill/{{$bill->id}}" >Edit</a>
         <a href="{{Request::root()}}/bill/delete-bill/{{$bill->id}}" onclick="return confirm('are you sure to delete')">Delete</a>
         </td>

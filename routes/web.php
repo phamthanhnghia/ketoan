@@ -41,7 +41,7 @@ Route::group(array('prefix' => '/'), function()
         Route::group(array('prefix' => 'bill'), function()
         {
             Route::get('/', 'BillController@index');
-            Route::get('/add-bill', 'BillController@add');
+            Route::get('/add-bill/{id}', 'BillController@add');
             Route::post('/add-bill-post', 'BillController@addPost');
             Route::get('/delete-bill/{id}', 'BillController@delete');
             Route::get('/edit-bill/{id}', 'BillController@edit');

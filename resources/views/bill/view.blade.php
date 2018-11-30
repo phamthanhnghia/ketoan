@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Laravel Crud By Crud Generator</title>
+  <title>PHIẾU THU CHI HẰNG NGÀY</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
+
 <body>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="http://crudegenerator.in">Laravel Crud By Crud Generator</a>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{{Request::root()}}/main">PHIẾU THU CHI HẰNG NGÀY</a>
       </div>
       <ul class="nav navbar-nav">
-        <li><a href="{{Request::root()}}/bill/manage-bill">Manage Bill</a></li>
-        <li><a href="{{Request::root()}}/bill/add-bill">Add Bill</a></li>
+        <li><a href="{{Request::root()}}/bill">Danh sách</a></li>
+        <!-- <li class="active"><a href="{{Request::root()}}/bill/add-bill">Add Bill</a></li> -->
       </ul>
-  </div>
-</nav>
+    </div>
+  </nav>
 
 <div class="container">
 

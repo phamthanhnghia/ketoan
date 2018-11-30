@@ -19,8 +19,8 @@
         <a class="navbar-brand" href="{{Request::root()}}/main">PHIẾU THU CHI HẰNG NGÀY</a>
       </div>
       <ul class="nav navbar-nav">
-        <li><a href="{{Request::root()}}/bill">Manage Bill</a></li>
-        <li class="active"><a href="{{Request::root()}}/bill/add-bill">Add Bill</a></li>
+        <li><a href="{{Request::root()}}/bill">Danh sách</a></li>
+        <!-- <li class="active"><a href="{{Request::root()}}/bill/add-bill">Add Bill</a></li> -->
       </ul>
     </div>
   </nav>
@@ -28,14 +28,22 @@
 
   <div class="container">
 
-    <h2>Phiếu thu tiền mặt</h2>
+    
+    <?php
+    if( $id == 1){
+      echo "<h2>PHIẾU THU TIỀN MẶT</h2>";
+    }else{
+      echo "<h2>PHIẾU CHI TIỀN MẶT</h2>";
+    }
+    ?>
+    
     <form role="form" method="post" action="{{Request::root()}}/bill/add-bill-post">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
             <label for="bill_type">Tài khoản:</label>
-            <input type="text" class="form-control" id="acc_code" name="acc_code">
+            <input type="text" class="form-control" id="acc_code" name="acc_code" value="C1111">
           </div>
         </div>
         <div class="col-md-6">
@@ -50,8 +58,8 @@
             <label for="bill_type">Loại hóa đơn:</label>
             <!-- <input type="text" class="form-control" id="bill_type" name="bill_type"> -->
             <select class="form-control" id="bill_type" name="bill_type">
-              <option value="1" selected>Phiếu thu</option>
-              <option value="saab">Phiếu chi</option>
+              <option value="1" <?= ( $id == 1) ? "selected" : ""; ?> >Phiếu thu</option>
+              <option value="2" <?= ( $id != 1) ? "selected" : ""; ?> >Phiếu chi</option>
             </select>
           </div>
         </div>
