@@ -34,7 +34,8 @@
             <a href="{{Request::root()}}/bill/add-bill/1" class="list-group-item list-group-item-action active">Phiếu thu</a>
             <a href="{{Request::root()}}/bill/add-bill/2" class="list-group-item list-group-item-action">Phiểu chi</a>
             <a href="{{Request::root()}}/bill" class="list-group-item list-group-item-action">Danh sách</a>
-            <a href="#" class="list-group-item list-group-item-action">Duyệt phiếu</a>
+            <a href="{{Request::root()}}/check_bill" class="list-group-item list-group-item-action">Duyệt phiếu</a>
+            <a href="{{Request::root()}}/report" class="list-group-item list-group-item-action">Report</a>
           </div>
         </div>
       </div>

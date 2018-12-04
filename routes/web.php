@@ -19,7 +19,7 @@ Route::group(array('prefix' => '/'), function()
 {
     Route::get('/', 'MainController@index');
     Route::post('/login', 'MainController@login');
-    
+
     if(true ){
         Route::get('/main', 'MainController@main');
 
@@ -79,9 +79,20 @@ Route::group(array('prefix' => '/'), function()
         });
         // end of accouting_account routes
 
+
+        Route::group(array('prefix' => 'check_bill'), function()
+        {
+            Route::get('/','CheckBillController@index');
+            Route::get('/check/{id}','CheckBillController@update');
+            Route::get('/form/{id}','CheckBillController@form');
+        });
+
+        Route::group(array('prefix' => 'report'), function()
+        {
+            Route::get('/','CheckBillController@report');
+            Route::get('/{type}/{date}','CheckBillController@processReport');
+        });
+
     } // end if user login
 });
 // end of main routes
-
-
-
