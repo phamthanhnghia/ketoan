@@ -54,7 +54,7 @@
         <td>{{ $bill->getUserName() }} </td>
         <td>
         <!-- <a href="{{Request::root()}}/bill/change-status-bill/{{$bill->id }}" > @if($bill->status==0) {{"Activate"}}  @else {{"Dectivate"}} @endif </a> -->
-        <a href="{{Request::root()}}/bill/edit-bill/{{$bill->id}}" >Edit</a>
+        <!-- <a href="{{Request::root()}}/bill/edit-bill/{{$bill->id}}" >Edit</a> -->
         <a href="{{Request::root()}}/bill/delete-bill/{{$bill->id}}" onclick="return confirm('are you sure to delete')">Delete</a>
         </td>
 

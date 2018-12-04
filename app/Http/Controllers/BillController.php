@@ -48,6 +48,7 @@ class BillController extends Controller {
         $bill->reason_note = Input::get('reason_note');
         $bill->original_docs = Input::get('original_docs');
         $bill->wh_id = Input::get('wh_id');
+        $bill->status = 0;
         $bill->save();
 
         $aDetail = Input::get('detail');

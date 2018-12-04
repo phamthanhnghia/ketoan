@@ -68,6 +68,7 @@
           <div class="form-group">
             <label for="user_id">Mã khách hàng:</label>
             <input type="text" class="form-control" id="customer-search" name="user_id">
+            <input type="text" style="display:none;" class="form-control" id="user_id" name="user_id">
           </div>
         </div>
 
@@ -150,6 +151,7 @@ $( function() {
         event.preventDefault();
         $("#name").val(ui.item.name);
         $("#address").val(ui.item.address);
+        $("#user_id").val(ui.item.value);
       } 
     });
   } );

@@ -43,7 +43,7 @@
   <tr>
     <td>{{$item->id}}</td>
     <td>{{$item->acc_code}}</td>
-    <td> <a href="/check_bill/form/{{$item->id}}" >@if($item->bill_type == 1) {{"Phiếu Thu"}} @else {{"Phiếu Nhập"}} @endif</a> </td>
+    <td> <a href="/check_bill/form/{{$item->id}}" >@if($item->bill_type == 1) {{"Phiếu Thu"}} @else {{"Phiếu Chi"}} @endif</a> </td>
     <td>{{$item->name}}</td>
     <td>
     <a href="/check_bill/check/{{$item->id}}" onclick="return confirm('Bạn có chắc DUYỆT phiếu này?')">
