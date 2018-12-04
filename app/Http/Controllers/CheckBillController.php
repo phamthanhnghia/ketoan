@@ -76,7 +76,12 @@ class CheckBillController extends Controller {
         $temp                 = DB::table('bill_detail')
                               ->where('bill_id',$item['id'])
                               ->get();
+        $total = 0;
         $item['bill_detail'] = json_decode($temp,true);
+        foreach($item['bill_detail'] as $itm) {
+          $total += $itm['total'];
+        }
+        $item['billTotal'] = $total;
         $arr_save[] = $item;
       }
       return view('report/index',['data'=>$arr_save,'type' =>$type,'date'=>$date]);

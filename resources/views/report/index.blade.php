@@ -59,6 +59,7 @@
            <th>Original Docs</th>
            <th>Tài Khoản Thanh Toán</th>
            <th>Ngày Tạo</th>
+           <th>Tổng Tiền</th>
          </tr>
         @foreach($data as $item)
          <div style="border-left:solid 2px gray">
@@ -69,6 +70,7 @@
              <td>{{$item['original_docs']}}</td>
              <td>{{$item['acc_code']}}</td>
              <td>{{$item['created_at']}}</td>
+             <td>{{$item['billTotal']}}</td>
            </tr>
            <tr>
              <th>Mã Tài Khoản</th>
