@@ -50,20 +50,24 @@ class BillController extends Controller {
         $bill->wh_id = Input::get('wh_id');
         $bill->status = 0;
         $bill->save();
-
+        // echo '<pre>';
+        // print_r(Input::get('detail'));
+        // echo '</pre>';
+        // die;
         $aDetail = Input::get('detail');
         foreach ($aDetail as $key => $value) {
-            if(empty($value->acc_code) || empty($value->invoice_number) ||  empty($value->total)){
+            // echo $value['acc_code'];
+            if(empty($value['acc_code']) || empty($value['invoice_number']) ||  empty($value['total'])){
                 continue;
             }
             $bill_detail = new Bill_detail();
             $bill_detail->bill_id = $bill->id;
-            $bill_detail->acc_code = $value->acc_code;
-            $bill_detail->released_date = $value->released_date;
-            $bill_detail->invoice_number = $value->invoice_number;
-            $bill_detail->invoice_type = $value->invoice_type;
-            $bill_detail->total = $value->total;
-            $bill_detail->exchange_rate = $value->exchange_rate;
+            $bill_detail->acc_code = $value['acc_code'];
+            $bill_detail->released_date = $value['released_date'];
+            $bill_detail->invoice_number = $value['invoice_number'];
+            $bill_detail->invoice_type = $value['invoice_type'];
+            $bill_detail->total = $value['total'];
+            $bill_detail->exchange_rate = $value['exchange_rate'];
             $bill_detail->save();
         }
         return redirect('bill')->with('message', 'Bill successfully added');
