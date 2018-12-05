@@ -49,6 +49,7 @@
     <a href="/check_bill/check/{{$item->id}}" onclick="return confirm('Bạn có chắc DUYỆT phiếu này?')">
       <i class="fa fa-check"></i>
       Duyệt</a>
+      <a href="{{Request::root()}}/bill/delete-bill/{{$item->id}}" onclick="return confirm('are you sure to delete')"><i class="fa fa-trash"></i> Hủy</a>
     </td>
 
   </tr>

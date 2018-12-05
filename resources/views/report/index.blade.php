@@ -105,7 +105,7 @@
     $("#view").click(()=>{
       var date = $("#date").val();
       var type = $("#type").val();
-      window.location = `./report/${type}/${date}`;
+      window.location = `http://localhost:8000/report/${type}/${date}`;
     })
     $("#print").click(()=>{
       printJS('view-report','html');

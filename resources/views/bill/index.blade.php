@@ -41,6 +41,7 @@
         <th>Tài khoản </th>
         <th>Loại hóa đơn</th>
         <th>Khách hàng</th>
+        <th>Trạng thái</th>
        <th>Thao tác</th>
       </tr>
     </thead>
@@ -52,6 +53,7 @@
         <td>{{ $bill->acc_code }} </td>
         <td> <a href="{{Request::root()}}/bill/view-bill/{{$bill->id}}" >  @if($bill->bill_type==1) {{"Phiếu thu"}}  @else {{"Phiếu chi"}} @endif</a> </td>
         <td>{{ $bill->getUserName() }} </td>
+        <td>@if($bill->status ==1) {{"Đã duyệt"}}  @else {{"Chưa Duyệt"}} @endif </td>
         <td>
         <!-- <a href="{{Request::root()}}/bill/change-status-bill/{{$bill->id }}" > @if($bill->status==0) {{"Activate"}}  @else {{"Dectivate"}} @endif </a> -->
         <!-- <a href="{{Request::root()}}/bill/edit-bill/{{$bill->id}}" >Edit</a> -->
