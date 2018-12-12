@@ -5,19 +5,23 @@ use App\Models\Users as Users;
 use App\Models\Bill_detail as Bill_detail;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 use Hash;
 class BillController extends Controller {
 
     public function index()
       { 
-        $data['bills'] = Bill::all();
-        return view('bill/index',$data);
+        // $data['bills'] = Bill::all();
+        // return view('bill/index',$data);
+        // $data = DB::table('bill')->paginate(15);
+        $data = Bill::paginate(10);
+        return view('bill.index', ['datas' => $data]);
       }
     public function add($id)
       { 
         $aSearchUser = array();
         $aData = Users::all();
-        
+        $pso ='';
         foreach ($aData as $key => $value) {
           $item['label'] = $value->user_code." - ".$value->name." - ".$value->address;
           $item['value'] = $value->id;
@@ -25,10 +29,17 @@ class BillController extends Controller {
           $item['address']  = $value->address;
           $aSearchUser[] = $item;
         }
+        $stt = 1;
+        if($id == 1){
+            $pso = 'TTM00000'.$stt.'-'.date('d').'-'.date('m');
+        }else{
+            $pso = 'CTM00000'.$stt.'-'.date('d').'-'.date('m');
+        }
 
         return view('bill/add',[
             'aSearchUser' => $aSearchUser,
             'id' => $id,
+            'pso' => $pso,
             ]);
       }
     public function addPost()
@@ -49,6 +60,7 @@ class BillController extends Controller {
         $bill->original_docs = Input::get('original_docs');
         $bill->wh_id = Input::get('wh_id');
         $bill->status = 0;
+        $bill->pso = Input::get('pso');
         $bill->save();
         // echo '<pre>';
         // print_r(Input::get('detail'));

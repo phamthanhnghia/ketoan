@@ -33,12 +33,12 @@
                 </div>
 @endif
 
-@if(count($bills)>0)
+@if(count($datas)>0)
   <table class="table table-hover">
     <thead>
       <tr>
         <th>#</th>
-        <th>Tài khoản </th>
+        <th>Mã phiếu </th>
         <th>Loại hóa đơn</th>
         <th>Khách hàng</th>
         <th>Trạng thái</th>
@@ -46,12 +46,15 @@
       </tr>
     </thead>
     <tbody>
-    <?php $i=1 ?>
-@foreach($bills as $bill)
+    <?php 
+      $i= ($datas->currentPage() - 1)*10 +1;
+      // echo $datas->currentPage();
+    ?>
+  @foreach($datas as $bill)
       <tr>
         <td>{{$i}} </td>
-        <td>{{ $bill->acc_code }} </td>
-        <td> <a href="{{Request::root()}}/bill/view-bill/{{$bill->id}}" >  @if($bill->bill_type==1) {{"Phiếu thu"}}  @else {{"Phiếu chi"}} @endif</a> </td>
+        <td><a href="{{Request::root()}}/check_bill/form/{{$bill->id}}" >{{ $bill->pso }} </a> </td>
+        <td>   @if($bill->bill_type==1) {{"Phiếu thu"}}  @else {{"Phiếu chi"}} @endif </td>
         <td>{{ $bill->getUserName() }} </td>
         <td>@if($bill->status ==1) {{"Đã duyệt"}}  @else {{"Chưa Duyệt"}} @endif </td>
         <td>
@@ -63,6 +66,7 @@
       </tr>
     <?php $i++;  ?>
     @endforeach
+    {{ $datas->links() }}
     </tbody>
   </table>
    @else

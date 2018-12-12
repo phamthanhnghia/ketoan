@@ -40,6 +40,14 @@
     <form role="form" method="post" action="{{Request::root()}}/bill/add-bill-post">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="bill_type">Thứ tự mã phiếu:</label>
+            <input type="text" class="form-control" id="pso" name="pso" value="{{ $pso }}">
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-3">
           <div class="form-group">
             <label for="bill_type">Tài khoản:</label>
